@@ -1,5 +1,5 @@
 import math
-import sys
+import os
 import random
 from enum import Enum
 from tkinter import *
@@ -155,6 +155,12 @@ class Block:
             self.board[y][x]["Button"].config(bg=self.color)
 
 
+def get_button_width():
+    if os.name == 'nt':
+        return 2
+    return 1
+
+
 class App:
     def __init__(self):
         self.wnd = Tk()
@@ -182,7 +188,7 @@ class App:
             line = []
             for c in range(COL_NUM):
                 idx = r * COL_NUM + c
-                b = Button(self.frame, state=DISABLED, height=1, width=1)
+                b = Button(self.frame, state=DISABLED, height=1, width=get_button_width())
                 b.grid(row=r, column=c)
                 line.append({"Button": b, "Empty": True})
                 #if DEFAULT_COLOR is None:

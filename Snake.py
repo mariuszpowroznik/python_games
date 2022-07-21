@@ -1,8 +1,14 @@
 import math
-import sys
+import os
 import random
 from tkinter import *
 from tkinter import messagebox
+
+
+def get_button_width():
+    if os.name == 'nt':
+        return 2
+    return 1
 
 
 class App:
@@ -34,7 +40,7 @@ class App:
         for r in range(self.ROW_NUM):
             for c in range(self.COL_NUM):
                 idx = r * self.COL_NUM + c
-                b = Button(self.frame, state=DISABLED, height=1, width=1)
+                b = Button(self.frame, state=DISABLED, height=1, width=get_button_width())
                 b.grid(row=r, column=c)
                 self.fields.append({"Button": b, "y": r, "x": c, "idx": idx})
                 self.empty_fields.append(idx)
