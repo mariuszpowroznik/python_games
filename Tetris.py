@@ -1,4 +1,3 @@
-import math
 import os
 import random
 from enum import Enum
@@ -7,7 +6,6 @@ from tkinter import messagebox
 
 ROW_NUM = 20
 COL_NUM = 15
-#DEFAULT_COLOR = "lightgrey"
 
 
 class BlockType(Enum):
